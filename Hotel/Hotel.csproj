@@ -1,0 +1,451 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3AD061D4-E31F-4E44-80A6-F519D3D5CAC1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Hotel</RootNamespace>
+    <AssemblyName>Hotel</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FontAwesome.Sharp, Version=6.3.0.0, Culture=neutral, PublicKeyToken=d16d1e4e568ec10f, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.Sharp.6.3.0\lib\net472\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Krypton, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\Krypton.2.0.0.0\lib\net40-Client\Krypton.dll</HintPath>
+    </Reference>
+    <Reference Include="Krypton.Toolkit, Version=80.24.3.64, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Krypton.Toolkit.80.24.3.64\lib\net472\Krypton.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountEmployee.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManager.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AdminMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminMenu.Designer.cs">
+      <DependentUpon>AdminMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CalendarLabor.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CalendarManager.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CalendarReceiptor.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Checkinout.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CheckInOutFolder\InOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CheckInOutFolder\InOut.Designer.cs">
+      <DependentUpon>InOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerFolder\AddCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerFolder\AddCustomer.Designer.cs">
+      <DependentUpon>AddCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerFolder\InfoCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerFolder\InfoCustomer.Designer.cs">
+      <DependentUpon>InfoCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerFolder\UpdateCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerFolder\UpdateCustomer.Designer.cs">
+      <DependentUpon>UpdateCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Employee.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeFolder\AddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeeFolder\AddEmployee.Designer.cs">
+      <DependentUpon>AddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeFolder\EmployeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeeFolder\EmployeeForm.Designer.cs">
+      <DependentUpon>EmployeeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeFolder\UpdateEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeeFolder\UpdateEmployee.Designer.cs">
+      <DependentUpon>UpdateEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeMenuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeeMenuForm.Designer.cs">
+      <DependentUpon>EmployeeMenuForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HistoryRoomcheck.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryAdd.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryFolder\AddInventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryFolder\AddInventory.Designer.cs">
+      <DependentUpon>AddInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryFolder\AddItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryFolder\AddItems.Designer.cs">
+      <DependentUpon>AddItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryFolder\TakeItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryFolder\TakeItems.Designer.cs">
+      <DependentUpon>TakeItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryHistory.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryTake.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Item.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Labor.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LaborMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LaborMenu.Designer.cs">
+      <DependentUpon>LaborMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ManagerFolder\InfoAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManagerFolder\InfoAccount.Designer.cs">
+      <DependentUpon>InfoAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Payroll.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Penalty.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PenaltyBoard.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Receipt.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Receiptor.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReportIncome.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReportInventory.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RevenueFolder\RevenueForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RevenueFolder\RevenueForm.Designer.cs">
+      <DependentUpon>RevenueForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Room.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RoomFolder\AddRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RoomFolder\AddRoom.Designer.cs">
+      <DependentUpon>AddRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RoomFolder\BookRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RoomFolder\BookRoom.Designer.cs">
+      <DependentUpon>BookRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RoomFolder\CreateRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RoomFolder\CreateRoom.Designer.cs">
+      <DependentUpon>CreateRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Salary.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalaryBoard.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalaryFolder\PenaltyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalaryFolder\PenaltyForm.Designer.cs">
+      <DependentUpon>PenaltyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalaryFolder\PunishForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalaryFolder\PunishForm.Designer.cs">
+      <DependentUpon>PunishForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalaryFolder\SalaryEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalaryFolder\SalaryEmployee.Designer.cs">
+      <DependentUpon>SalaryEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalaryFolder\SalaryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalaryFolder\SalaryForm.Designer.cs">
+      <DependentUpon>SalaryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScheduleFolder\ScheduleTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScheduleFolder\ScheduleTable.Designer.cs">
+      <DependentUpon>ScheduleTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Shift.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AdminMenu.resx">
+      <DependentUpon>AdminMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheckInOutFolder\InOut.resx">
+      <DependentUpon>InOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerFolder\AddCustomer.resx">
+      <DependentUpon>AddCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerFolder\InfoCustomer.resx">
+      <DependentUpon>InfoCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerFolder\UpdateCustomer.resx">
+      <DependentUpon>UpdateCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeFolder\AddEmployee.resx">
+      <DependentUpon>AddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeFolder\EmployeeForm.resx">
+      <DependentUpon>EmployeeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeFolder\UpdateEmployee.resx">
+      <DependentUpon>UpdateEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeMenuForm.resx">
+      <DependentUpon>EmployeeMenuForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryFolder\AddInventory.resx">
+      <DependentUpon>AddInventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryFolder\AddItems.resx">
+      <DependentUpon>AddItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryFolder\TakeItems.resx">
+      <DependentUpon>TakeItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LaborMenu.resx">
+      <DependentUpon>LaborMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManagerFolder\InfoAccount.resx">
+      <DependentUpon>InfoAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="RevenueFolder\RevenueForm.resx">
+      <DependentUpon>RevenueForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RoomFolder\AddRoom.resx">
+      <DependentUpon>AddRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RoomFolder\BookRoom.resx">
+      <DependentUpon>BookRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RoomFolder\CreateRoom.resx">
+      <DependentUpon>CreateRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalaryFolder\PenaltyForm.resx">
+      <DependentUpon>PenaltyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalaryFolder\PunishForm.resx">
+      <DependentUpon>PunishForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalaryFolder\SalaryEmployee.resx">
+      <DependentUpon>SalaryEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalaryFolder\SalaryForm.resx">
+      <DependentUpon>SalaryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScheduleFolder\ScheduleTable.resx">
+      <DependentUpon>ScheduleTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backGround_DN.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ReportFolder\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

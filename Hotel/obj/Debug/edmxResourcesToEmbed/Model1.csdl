@@ -1,0 +1,949 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HotelDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AccountEmployee">
+    <Key>
+      <PropertyRef Name="ID_Employee" />
+    </Key>
+    <Property Name="ID_Employee" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__AccountEm__ID_Em__59FA5E80" FromRole="AccountEmployee" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="AccountManager">
+    <Key>
+      <PropertyRef Name="ID_Manager" />
+    </Key>
+    <Property Name="ID_Manager" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Manager" Relationship="Self.FK__AccountMa__ID_Ma__398D8EEE" FromRole="AccountManager" ToRole="Manager" />
+  </EntityType>
+  <EntityType Name="CalendarLabor">
+    <Key>
+      <PropertyRef Name="ID_CalendarLabor" />
+    </Key>
+    <Property Name="ID_CalendarLabor" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_Shift" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Timein" Type="Time" Precision="7" />
+    <Property Name="Timeout" Type="Time" Precision="7" />
+    <Property Name="Day" Type="DateTime" Precision="0" />
+    <Property Name="ID_Labor" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Name_Employee" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Labor" Relationship="Self.FK__CalendarL__ID_La__634EBE90" FromRole="CalendarLabor" ToRole="Labor" />
+    <NavigationProperty Name="Shift" Relationship="Self.FK__CalendarL__ID_Sh__625A9A57" FromRole="CalendarLabor" ToRole="Shift" />
+  </EntityType>
+  <EntityType Name="CalendarManager">
+    <Key>
+      <PropertyRef Name="ID_CalendarManager" />
+    </Key>
+    <Property Name="ID_CalendarManager" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_Shift" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Timein" Type="Time" Precision="7" />
+    <Property Name="Timeout" Type="Time" Precision="7" />
+    <Property Name="ID_Manager" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Name_Manager" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Day" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Manager" Relationship="Self.FK__CalendarM__ID_Ma__2DE6D218" FromRole="CalendarManager" ToRole="Manager" />
+    <NavigationProperty Name="Shift" Relationship="Self.FK__CalendarM__ID_Sh__2CF2ADDF" FromRole="CalendarManager" ToRole="Shift" />
+  </EntityType>
+  <EntityType Name="CalendarReceiptor">
+    <Key>
+      <PropertyRef Name="ID_CalendarReceiptor" />
+    </Key>
+    <Property Name="ID_CalendarReceiptor" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_Shift" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Timein" Type="Time" Precision="7" />
+    <Property Name="Timeout" Type="Time" Precision="7" />
+    <Property Name="Name_Receiptor" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Day" Type="DateTime" Precision="0" />
+    <Property Name="ID_Receiptor" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Receiptor" Relationship="Self.FK__CalendarE__ID_Re__6442E2C9" FromRole="CalendarReceiptor" ToRole="Receiptor" />
+    <NavigationProperty Name="Checkinouts" Relationship="Self.FK__Checkinou__ID_Ca__44FF419A" FromRole="CalendarReceiptor" ToRole="Checkinout" />
+    <NavigationProperty Name="Penalties" Relationship="Self.FK__Penalty__ID_Cale__4CA06362" FromRole="CalendarReceiptor" ToRole="Penalty" />
+    <NavigationProperty Name="Shift" Relationship="Self.FK__SmartCale__ID_Sh__403A8C7D" FromRole="CalendarReceiptor" ToRole="Shift" />
+  </EntityType>
+  <EntityType Name="Checkinout">
+    <Key>
+      <PropertyRef Name="ID_Checkinout" />
+    </Key>
+    <Property Name="ID_Checkinout" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_Employee" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ID_Calendar" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Timecheckin" Type="DateTime" Precision="3" />
+    <Property Name="Timecheckout" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="CalendarReceiptor" Relationship="Self.FK__Checkinou__ID_Ca__44FF419A" FromRole="Checkinout" ToRole="CalendarReceiptor" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__Checkinou__ID_Em__440B1D61" FromRole="Checkinout" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="ID_Customer" />
+    </Key>
+    <Property Name="ID_Customer" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Number" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Pictures" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="DOB" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="HistoryRoomchecks" Relationship="Self.FK__HistoryRo__ID_Cu__66603565" FromRole="Customer" ToRole="HistoryRoomcheck" />
+    <NavigationProperty Name="Receipts" Relationship="Self.FK__Receipt__ID_Cust__6B24EA82" FromRole="Customer" ToRole="Receipt" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="ID_Employee" />
+    </Key>
+    <Property Name="ID_Employee" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DOB" Type="DateTime" Precision="0" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Role" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="AccountEmployee" Relationship="Self.FK__AccountEm__ID_Em__59FA5E80" FromRole="Employee" ToRole="AccountEmployee" />
+    <NavigationProperty Name="Checkinouts" Relationship="Self.FK__Checkinou__ID_Em__440B1D61" FromRole="Employee" ToRole="Checkinout" />
+    <NavigationProperty Name="Labor" Relationship="Self.FK__Labor__ID_Employ__01142BA1" FromRole="Employee" ToRole="Labor" />
+    <NavigationProperty Name="Payrolls" Relationship="Self.FK__Payroll__ID_Empl__5629CD9C" FromRole="Employee" ToRole="Payroll" />
+    <NavigationProperty Name="Penalties" Relationship="Self.FK__Penalty__ID_Empl__4AB81AF0" FromRole="Employee" ToRole="Penalty" />
+    <NavigationProperty Name="Receiptor" Relationship="Self.FK__Receiptor__ID_Em__7E37BEF6" FromRole="Employee" ToRole="Receiptor" />
+    <NavigationProperty Name="Salaries" Relationship="Self.FK__Salary__ID_Emplo__5165187F" FromRole="Employee" ToRole="Salary" />
+  </EntityType>
+  <EntityType Name="HistoryRoomcheck">
+    <Key>
+      <PropertyRef Name="ID_TakeItem" />
+    </Key>
+    <Property Name="ID_TakeItem" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_Customer" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ID_Room" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Timecheckin" Type="DateTime" Precision="3" />
+    <Property Name="Timecheckout" Type="DateTime" Precision="3" />
+    <Property Name="Timehavetocheckout" Type="DateTime" Precision="3" />
+    <Property Name="ID_Receiptor" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK__HistoryRo__ID_Cu__66603565" FromRole="HistoryRoomcheck" ToRole="Customer" />
+    <NavigationProperty Name="Receiptor" Relationship="Self.FK__HistoryRo__ID_Re__17036CC0" FromRole="HistoryRoomcheck" ToRole="Receiptor" />
+    <NavigationProperty Name="Room" Relationship="Self.FK__HistoryRo__ID_Ro__68487DD7" FromRole="HistoryRoomcheck" ToRole="Room" />
+  </EntityType>
+  <EntityType Name="InventoryAdd">
+    <Key>
+      <PropertyRef Name="ID_InventoryAdd" />
+    </Key>
+    <Property Name="ID_InventoryAdd" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_InventoryHistory" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ID_Items" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Number" Type="Int32" />
+    <Property Name="Time" Type="DateTime" Precision="3" />
+    <Property Name="ID_Manager" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="InventoryHistory" Relationship="Self.FK__Inventory__ID_In__19DFD96B" FromRole="InventoryAdd" ToRole="InventoryHistory" />
+    <NavigationProperty Name="Item" Relationship="Self.FK__Inventory__ID_It__1AD3FDA4" FromRole="InventoryAdd" ToRole="Items" />
+    <NavigationProperty Name="Manager" Relationship="Self.FK__Inventory__ID_Ma__2180FB33" FromRole="InventoryAdd" ToRole="Manager" />
+  </EntityType>
+  <EntityType Name="InventoryHistory">
+    <Key>
+      <PropertyRef Name="ID_InventoryHistory" />
+    </Key>
+    <Property Name="ID_InventoryHistory" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_Items" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Number" Type="Int32" />
+    <Property Name="Time" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="InventoryAdds" Relationship="Self.FK__Inventory__ID_In__19DFD96B" FromRole="InventoryHistory" ToRole="InventoryAdd" />
+    <NavigationProperty Name="InventoryTakes" Relationship="Self.FK__Inventory__ID_In__1EA48E88" FromRole="InventoryHistory" ToRole="InventoryTake" />
+    <NavigationProperty Name="Item" Relationship="Self.FK__Inventory__ID_It__60A75C0F" FromRole="InventoryHistory" ToRole="Items" />
+  </EntityType>
+  <EntityType Name="InventoryTake">
+    <Key>
+      <PropertyRef Name="ID_InventoryTake" />
+    </Key>
+    <Property Name="ID_InventoryTake" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_InventoryHistory" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ID_Items" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Number" Type="Int32" />
+    <Property Name="Time" Type="DateTime" Precision="3" />
+    <Property Name="ID_Room" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ID_Labor" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="InventoryHistory" Relationship="Self.FK__Inventory__ID_In__1EA48E88" FromRole="InventoryTake" ToRole="InventoryHistory" />
+    <NavigationProperty Name="Item" Relationship="Self.FK__Inventory__ID_It__1F98B2C1" FromRole="InventoryTake" ToRole="Items" />
+    <NavigationProperty Name="Labor" Relationship="Self.FK__Inventory__ID_La__4D5F7D71" FromRole="InventoryTake" ToRole="Labor" />
+    <NavigationProperty Name="Room" Relationship="Self.FK__Inventory__ID_Ro__208CD6FA" FromRole="InventoryTake" ToRole="Room" />
+  </EntityType>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="ID_Items" />
+    </Key>
+    <Property Name="ID_Items" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
+    <NavigationProperty Name="InventoryAdds" Relationship="Self.FK__Inventory__ID_It__1AD3FDA4" FromRole="Items" ToRole="InventoryAdd" />
+    <NavigationProperty Name="InventoryHistories" Relationship="Self.FK__Inventory__ID_It__60A75C0F" FromRole="Items" ToRole="InventoryHistory" />
+    <NavigationProperty Name="InventoryTakes" Relationship="Self.FK__Inventory__ID_It__1F98B2C1" FromRole="Items" ToRole="InventoryTake" />
+  </EntityType>
+  <EntityType Name="Labor">
+    <Key>
+      <PropertyRef Name="ID_Employee" />
+    </Key>
+    <Property Name="ID_Employee" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="CalendarLabors" Relationship="Self.FK__CalendarL__ID_La__634EBE90" FromRole="Labor" ToRole="CalendarLabor" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__Labor__ID_Employ__01142BA1" FromRole="Labor" ToRole="Employee" />
+    <NavigationProperty Name="InventoryTakes" Relationship="Self.FK__Inventory__ID_La__4D5F7D71" FromRole="Labor" ToRole="InventoryTake" />
+  </EntityType>
+  <EntityType Name="Manager">
+    <Key>
+      <PropertyRef Name="ID_Manager" />
+    </Key>
+    <Property Name="ID_Manager" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="DOB" Type="DateTime" Precision="0" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="AccountManager" Relationship="Self.FK__AccountMa__ID_Ma__398D8EEE" FromRole="Manager" ToRole="AccountManager" />
+    <NavigationProperty Name="CalendarManagers" Relationship="Self.FK__CalendarM__ID_Ma__2DE6D218" FromRole="Manager" ToRole="CalendarManager" />
+    <NavigationProperty Name="InventoryAdds" Relationship="Self.FK__Inventory__ID_Ma__2180FB33" FromRole="Manager" ToRole="InventoryAdd" />
+    <NavigationProperty Name="Payrolls" Relationship="Self.FK__Payroll__ID_Mana__571DF1D5" FromRole="Manager" ToRole="Payroll" />
+    <NavigationProperty Name="Penalties" Relationship="Self.FK__Penalty__ID_Mana__4BAC3F29" FromRole="Manager" ToRole="Penalty" />
+    <NavigationProperty Name="ReportIncomes" Relationship="Self.FK__ReportInc__ID_Ma__2EDAF651" FromRole="Manager" ToRole="ReportIncome" />
+    <NavigationProperty Name="ReportInventories" Relationship="Self.FK__ReportInv__ID_Ma__2FCF1A8A" FromRole="Manager" ToRole="ReportInventory" />
+  </EntityType>
+  <EntityType Name="Payroll">
+    <Key>
+      <PropertyRef Name="ID_Payroll" />
+    </Key>
+    <Property Name="ID_Payroll" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_Employee" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ID_Manager" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Total_Payment" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="Punish" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="Salary" Type="Decimal" Precision="10" Scale="2" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__Payroll__ID_Empl__5629CD9C" FromRole="Payroll" ToRole="Employee" />
+    <NavigationProperty Name="Manager" Relationship="Self.FK__Payroll__ID_Mana__571DF1D5" FromRole="Payroll" ToRole="Manager" />
+  </EntityType>
+  <EntityType Name="Penalty">
+    <Key>
+      <PropertyRef Name="ID_Penalty" />
+    </Key>
+    <Property Name="ID_Penalty" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_PenaltyBoard" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ID_Employee" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ID_Manager" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ID_Calendar" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Day" Type="DateTime" Precision="0" />
+    <Property Name="Shift" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="Decimal" Precision="10" Scale="2" />
+    <NavigationProperty Name="CalendarReceiptor" Relationship="Self.FK__Penalty__ID_Cale__4CA06362" FromRole="Penalty" ToRole="CalendarReceiptor" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__Penalty__ID_Empl__4AB81AF0" FromRole="Penalty" ToRole="Employee" />
+    <NavigationProperty Name="Manager" Relationship="Self.FK__Penalty__ID_Mana__4BAC3F29" FromRole="Penalty" ToRole="Manager" />
+    <NavigationProperty Name="PenaltyBoard" Relationship="Self.FK__Penalty__ID_Pena__49C3F6B7" FromRole="Penalty" ToRole="PenaltyBoard" />
+  </EntityType>
+  <EntityType Name="PenaltyBoard">
+    <Key>
+      <PropertyRef Name="ID_PenaltyBoard" />
+    </Key>
+    <Property Name="ID_PenaltyBoard" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Role" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="Decimal" Precision="10" Scale="2" />
+    <NavigationProperty Name="Penalties" Relationship="Self.FK__Penalty__ID_Pena__49C3F6B7" FromRole="PenaltyBoard" ToRole="Penalty" />
+  </EntityType>
+  <EntityType Name="Receipt">
+    <Key>
+      <PropertyRef Name="ID_Receipt" />
+    </Key>
+    <Property Name="ID_Receipt" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_Customer" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Name_Customer" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ID_Room" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Timemake" Type="DateTime" Precision="3" />
+    <Property Name="Totalpayment" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="Dayintotal" Type="DateTime" Precision="0" />
+    <Property Name="ID_Receiptor" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK__Receipt__ID_Cust__6B24EA82" FromRole="Receipt" ToRole="Customer" />
+    <NavigationProperty Name="Receiptor" Relationship="Self.FK__Receipt__ID_Rece__151B244E" FromRole="Receipt" ToRole="Receiptor" />
+    <NavigationProperty Name="Room" Relationship="Self.FK__Receipt__ID_Room__6D0D32F4" FromRole="Receipt" ToRole="Room" />
+  </EntityType>
+  <EntityType Name="Receiptor">
+    <Key>
+      <PropertyRef Name="ID_Employee" />
+    </Key>
+    <Property Name="ID_Employee" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="CalendarReceiptors" Relationship="Self.FK__CalendarE__ID_Re__6442E2C9" FromRole="Receiptor" ToRole="CalendarReceiptor" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__Receiptor__ID_Em__7E37BEF6" FromRole="Receiptor" ToRole="Employee" />
+    <NavigationProperty Name="HistoryRoomchecks" Relationship="Self.FK__HistoryRo__ID_Re__17036CC0" FromRole="Receiptor" ToRole="HistoryRoomcheck" />
+    <NavigationProperty Name="Receipts" Relationship="Self.FK__Receipt__ID_Rece__151B244E" FromRole="Receiptor" ToRole="Receipt" />
+  </EntityType>
+  <EntityType Name="ReportIncome">
+    <Key>
+      <PropertyRef Name="ID_ReportIncome" />
+    </Key>
+    <Property Name="ID_ReportIncome" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AmountIncome" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="AmountOutcome" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="ID_Manager" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Manager" Relationship="Self.FK__ReportInc__ID_Ma__2EDAF651" FromRole="ReportIncome" ToRole="Manager" />
+  </EntityType>
+  <EntityType Name="ReportInventory">
+    <Key>
+      <PropertyRef Name="ID_ReportInventory" />
+    </Key>
+    <Property Name="ID_ReportInventory" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Totalpriceatitems" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="Totalpricedeliveritems" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="Day" Type="DateTime" Precision="0" />
+    <Property Name="ID_Manager" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Manager" Relationship="Self.FK__ReportInv__ID_Ma__2FCF1A8A" FromRole="ReportInventory" ToRole="Manager" />
+  </EntityType>
+  <EntityType Name="Room">
+    <Key>
+      <PropertyRef Name="ID_Room" />
+    </Key>
+    <Property Name="ID_Room" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="State" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Numberofbed" Type="Int32" />
+    <Property Name="Priceperhours" Type="Decimal" Precision="10" Scale="2" />
+    <NavigationProperty Name="HistoryRoomchecks" Relationship="Self.FK__HistoryRo__ID_Ro__68487DD7" FromRole="Room" ToRole="HistoryRoomcheck" />
+    <NavigationProperty Name="InventoryTakes" Relationship="Self.FK__Inventory__ID_Ro__208CD6FA" FromRole="Room" ToRole="InventoryTake" />
+    <NavigationProperty Name="Receipts" Relationship="Self.FK__Receipt__ID_Room__6D0D32F4" FromRole="Room" ToRole="Receipt" />
+  </EntityType>
+  <EntityType Name="Salary">
+    <Key>
+      <PropertyRef Name="ID_Salary" />
+    </Key>
+    <Property Name="ID_Salary" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_Employee" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ID_SalaryBoard" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Day" Type="DateTime" Precision="0" />
+    <Property Name="Shift" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="Decimal" Precision="10" Scale="2" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__Salary__ID_Emplo__5165187F" FromRole="Salary" ToRole="Employee" />
+    <NavigationProperty Name="SalaryBoard" Relationship="Self.FK__Salary__ID_Salar__52593CB8" FromRole="Salary" ToRole="SalaryBoard" />
+  </EntityType>
+  <EntityType Name="SalaryBoard">
+    <Key>
+      <PropertyRef Name="ID_SalaryBoard" />
+    </Key>
+    <Property Name="ID_SalaryBoard" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Role" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="Decimal" Precision="10" Scale="2" />
+    <NavigationProperty Name="Salaries" Relationship="Self.FK__Salary__ID_Salar__52593CB8" FromRole="SalaryBoard" ToRole="Salary" />
+  </EntityType>
+  <EntityType Name="Shift">
+    <Key>
+      <PropertyRef Name="ID_Shift" />
+    </Key>
+    <Property Name="ID_Shift" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Timein" Type="Time" Precision="7" />
+    <Property Name="Timeout" Type="Time" Precision="7" />
+    <NavigationProperty Name="CalendarLabors" Relationship="Self.FK__CalendarL__ID_Sh__625A9A57" FromRole="Shift" ToRole="CalendarLabor" />
+    <NavigationProperty Name="CalendarManagers" Relationship="Self.FK__CalendarM__ID_Sh__2CF2ADDF" FromRole="Shift" ToRole="CalendarManager" />
+    <NavigationProperty Name="CalendarReceiptors" Relationship="Self.FK__SmartCale__ID_Sh__403A8C7D" FromRole="Shift" ToRole="CalendarReceiptor" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK__AccountEm__ID_Em__59FA5E80">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="AccountEmployee" Type="Self.AccountEmployee" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="ID_Employee" />
+      </Principal>
+      <Dependent Role="AccountEmployee">
+        <PropertyRef Name="ID_Employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AccountMa__ID_Ma__398D8EEE">
+    <End Role="Manager" Type="Self.Manager" Multiplicity="1" />
+    <End Role="AccountManager" Type="Self.AccountManager" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Manager">
+        <PropertyRef Name="ID_Manager" />
+      </Principal>
+      <Dependent Role="AccountManager">
+        <PropertyRef Name="ID_Manager" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CalendarL__ID_La__634EBE90">
+    <End Role="Labor" Type="Self.Labor" Multiplicity="0..1" />
+    <End Role="CalendarLabor" Type="Self.CalendarLabor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Labor">
+        <PropertyRef Name="ID_Employee" />
+      </Principal>
+      <Dependent Role="CalendarLabor">
+        <PropertyRef Name="ID_Labor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CalendarL__ID_Sh__625A9A57">
+    <End Role="Shift" Type="Self.Shift" Multiplicity="0..1" />
+    <End Role="CalendarLabor" Type="Self.CalendarLabor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shift">
+        <PropertyRef Name="ID_Shift" />
+      </Principal>
+      <Dependent Role="CalendarLabor">
+        <PropertyRef Name="ID_Shift" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CalendarM__ID_Ma__2DE6D218">
+    <End Role="Manager" Type="Self.Manager" Multiplicity="0..1" />
+    <End Role="CalendarManager" Type="Self.CalendarManager" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manager">
+        <PropertyRef Name="ID_Manager" />
+      </Principal>
+      <Dependent Role="CalendarManager">
+        <PropertyRef Name="ID_Manager" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CalendarM__ID_Sh__2CF2ADDF">
+    <End Role="Shift" Type="Self.Shift" Multiplicity="0..1" />
+    <End Role="CalendarManager" Type="Self.CalendarManager" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shift">
+        <PropertyRef Name="ID_Shift" />
+      </Principal>
+      <Dependent Role="CalendarManager">
+        <PropertyRef Name="ID_Shift" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CalendarE__ID_Re__6442E2C9">
+    <End Role="Receiptor" Type="Self.Receiptor" Multiplicity="0..1" />
+    <End Role="CalendarReceiptor" Type="Self.CalendarReceiptor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Receiptor">
+        <PropertyRef Name="ID_Employee" />
+      </Principal>
+      <Dependent Role="CalendarReceiptor">
+        <PropertyRef Name="ID_Receiptor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Checkinou__ID_Ca__44FF419A">
+    <End Role="CalendarReceiptor" Type="Self.CalendarReceiptor" Multiplicity="0..1" />
+    <End Role="Checkinout" Type="Self.Checkinout" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CalendarReceiptor">
+        <PropertyRef Name="ID_CalendarReceiptor" />
+      </Principal>
+      <Dependent Role="Checkinout">
+        <PropertyRef Name="ID_Calendar" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Penalty__ID_Cale__4CA06362">
+    <End Role="CalendarReceiptor" Type="Self.CalendarReceiptor" Multiplicity="0..1" />
+    <End Role="Penalty" Type="Self.Penalty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CalendarReceiptor">
+        <PropertyRef Name="ID_CalendarReceiptor" />
+      </Principal>
+      <Dependent Role="Penalty">
+        <PropertyRef Name="ID_Calendar" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SmartCale__ID_Sh__403A8C7D">
+    <End Role="Shift" Type="Self.Shift" Multiplicity="0..1" />
+    <End Role="CalendarReceiptor" Type="Self.CalendarReceiptor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shift">
+        <PropertyRef Name="ID_Shift" />
+      </Principal>
+      <Dependent Role="CalendarReceiptor">
+        <PropertyRef Name="ID_Shift" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Checkinou__ID_Em__440B1D61">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Checkinout" Type="Self.Checkinout" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="ID_Employee" />
+      </Principal>
+      <Dependent Role="Checkinout">
+        <PropertyRef Name="ID_Employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HistoryRo__ID_Cu__66603565">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="HistoryRoomcheck" Type="Self.HistoryRoomcheck" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="ID_Customer" />
+      </Principal>
+      <Dependent Role="HistoryRoomcheck">
+        <PropertyRef Name="ID_Customer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Receipt__ID_Cust__6B24EA82">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Receipt" Type="Self.Receipt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="ID_Customer" />
+      </Principal>
+      <Dependent Role="Receipt">
+        <PropertyRef Name="ID_Customer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Labor__ID_Employ__01142BA1">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Labor" Type="Self.Labor" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="ID_Employee" />
+      </Principal>
+      <Dependent Role="Labor">
+        <PropertyRef Name="ID_Employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Payroll__ID_Empl__5629CD9C">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Payroll" Type="Self.Payroll" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="ID_Employee" />
+      </Principal>
+      <Dependent Role="Payroll">
+        <PropertyRef Name="ID_Employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Penalty__ID_Empl__4AB81AF0">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Penalty" Type="Self.Penalty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="ID_Employee" />
+      </Principal>
+      <Dependent Role="Penalty">
+        <PropertyRef Name="ID_Employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Receiptor__ID_Em__7E37BEF6">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Receiptor" Type="Self.Receiptor" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="ID_Employee" />
+      </Principal>
+      <Dependent Role="Receiptor">
+        <PropertyRef Name="ID_Employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Salary__ID_Emplo__5165187F">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Salary" Type="Self.Salary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="ID_Employee" />
+      </Principal>
+      <Dependent Role="Salary">
+        <PropertyRef Name="ID_Employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HistoryRo__ID_Re__17036CC0">
+    <End Role="Receiptor" Type="Self.Receiptor" Multiplicity="0..1" />
+    <End Role="HistoryRoomcheck" Type="Self.HistoryRoomcheck" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Receiptor">
+        <PropertyRef Name="ID_Employee" />
+      </Principal>
+      <Dependent Role="HistoryRoomcheck">
+        <PropertyRef Name="ID_Receiptor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HistoryRo__ID_Ro__68487DD7">
+    <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+    <End Role="HistoryRoomcheck" Type="Self.HistoryRoomcheck" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="ID_Room" />
+      </Principal>
+      <Dependent Role="HistoryRoomcheck">
+        <PropertyRef Name="ID_Room" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Inventory__ID_In__19DFD96B">
+    <End Role="InventoryHistory" Type="Self.InventoryHistory" Multiplicity="0..1" />
+    <End Role="InventoryAdd" Type="Self.InventoryAdd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InventoryHistory">
+        <PropertyRef Name="ID_InventoryHistory" />
+      </Principal>
+      <Dependent Role="InventoryAdd">
+        <PropertyRef Name="ID_InventoryHistory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Inventory__ID_It__1AD3FDA4">
+    <End Role="Items" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="InventoryAdd" Type="Self.InventoryAdd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Items">
+        <PropertyRef Name="ID_Items" />
+      </Principal>
+      <Dependent Role="InventoryAdd">
+        <PropertyRef Name="ID_Items" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Inventory__ID_Ma__2180FB33">
+    <End Role="Manager" Type="Self.Manager" Multiplicity="0..1" />
+    <End Role="InventoryAdd" Type="Self.InventoryAdd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manager">
+        <PropertyRef Name="ID_Manager" />
+      </Principal>
+      <Dependent Role="InventoryAdd">
+        <PropertyRef Name="ID_Manager" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Inventory__ID_In__1EA48E88">
+    <End Role="InventoryHistory" Type="Self.InventoryHistory" Multiplicity="0..1" />
+    <End Role="InventoryTake" Type="Self.InventoryTake" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InventoryHistory">
+        <PropertyRef Name="ID_InventoryHistory" />
+      </Principal>
+      <Dependent Role="InventoryTake">
+        <PropertyRef Name="ID_InventoryHistory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Inventory__ID_It__60A75C0F">
+    <End Role="Items" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="InventoryHistory" Type="Self.InventoryHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Items">
+        <PropertyRef Name="ID_Items" />
+      </Principal>
+      <Dependent Role="InventoryHistory">
+        <PropertyRef Name="ID_Items" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Inventory__ID_It__1F98B2C1">
+    <End Role="Items" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="InventoryTake" Type="Self.InventoryTake" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Items">
+        <PropertyRef Name="ID_Items" />
+      </Principal>
+      <Dependent Role="InventoryTake">
+        <PropertyRef Name="ID_Items" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Inventory__ID_La__4D5F7D71">
+    <End Role="Labor" Type="Self.Labor" Multiplicity="0..1" />
+    <End Role="InventoryTake" Type="Self.InventoryTake" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Labor">
+        <PropertyRef Name="ID_Employee" />
+      </Principal>
+      <Dependent Role="InventoryTake">
+        <PropertyRef Name="ID_Labor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Inventory__ID_Ro__208CD6FA">
+    <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+    <End Role="InventoryTake" Type="Self.InventoryTake" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="ID_Room" />
+      </Principal>
+      <Dependent Role="InventoryTake">
+        <PropertyRef Name="ID_Room" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Payroll__ID_Mana__571DF1D5">
+    <End Role="Manager" Type="Self.Manager" Multiplicity="0..1" />
+    <End Role="Payroll" Type="Self.Payroll" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manager">
+        <PropertyRef Name="ID_Manager" />
+      </Principal>
+      <Dependent Role="Payroll">
+        <PropertyRef Name="ID_Manager" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Penalty__ID_Mana__4BAC3F29">
+    <End Role="Manager" Type="Self.Manager" Multiplicity="0..1" />
+    <End Role="Penalty" Type="Self.Penalty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manager">
+        <PropertyRef Name="ID_Manager" />
+      </Principal>
+      <Dependent Role="Penalty">
+        <PropertyRef Name="ID_Manager" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ReportInc__ID_Ma__2EDAF651">
+    <End Role="Manager" Type="Self.Manager" Multiplicity="0..1" />
+    <End Role="ReportIncome" Type="Self.ReportIncome" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manager">
+        <PropertyRef Name="ID_Manager" />
+      </Principal>
+      <Dependent Role="ReportIncome">
+        <PropertyRef Name="ID_Manager" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ReportInv__ID_Ma__2FCF1A8A">
+    <End Role="Manager" Type="Self.Manager" Multiplicity="0..1" />
+    <End Role="ReportInventory" Type="Self.ReportInventory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manager">
+        <PropertyRef Name="ID_Manager" />
+      </Principal>
+      <Dependent Role="ReportInventory">
+        <PropertyRef Name="ID_Manager" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Penalty__ID_Pena__49C3F6B7">
+    <End Role="PenaltyBoard" Type="Self.PenaltyBoard" Multiplicity="0..1" />
+    <End Role="Penalty" Type="Self.Penalty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PenaltyBoard">
+        <PropertyRef Name="ID_PenaltyBoard" />
+      </Principal>
+      <Dependent Role="Penalty">
+        <PropertyRef Name="ID_PenaltyBoard" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Receipt__ID_Rece__151B244E">
+    <End Role="Receiptor" Type="Self.Receiptor" Multiplicity="0..1" />
+    <End Role="Receipt" Type="Self.Receipt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Receiptor">
+        <PropertyRef Name="ID_Employee" />
+      </Principal>
+      <Dependent Role="Receipt">
+        <PropertyRef Name="ID_Receiptor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Receipt__ID_Room__6D0D32F4">
+    <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+    <End Role="Receipt" Type="Self.Receipt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="ID_Room" />
+      </Principal>
+      <Dependent Role="Receipt">
+        <PropertyRef Name="ID_Room" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Salary__ID_Salar__52593CB8">
+    <End Role="SalaryBoard" Type="Self.SalaryBoard" Multiplicity="0..1" />
+    <End Role="Salary" Type="Self.Salary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalaryBoard">
+        <PropertyRef Name="ID_SalaryBoard" />
+      </Principal>
+      <Dependent Role="Salary">
+        <PropertyRef Name="ID_SalaryBoard" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HotelDataEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AccountEmployees" EntityType="Self.AccountEmployee" />
+    <EntitySet Name="AccountManagers" EntityType="Self.AccountManager" />
+    <EntitySet Name="CalendarLabors" EntityType="Self.CalendarLabor" />
+    <EntitySet Name="CalendarManagers" EntityType="Self.CalendarManager" />
+    <EntitySet Name="CalendarReceiptors" EntityType="Self.CalendarReceiptor" />
+    <EntitySet Name="Checkinouts" EntityType="Self.Checkinout" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <EntitySet Name="HistoryRoomchecks" EntityType="Self.HistoryRoomcheck" />
+    <EntitySet Name="InventoryAdds" EntityType="Self.InventoryAdd" />
+    <EntitySet Name="InventoryHistories" EntityType="Self.InventoryHistory" />
+    <EntitySet Name="InventoryTakes" EntityType="Self.InventoryTake" />
+    <EntitySet Name="Items" EntityType="Self.Item" />
+    <EntitySet Name="Labors" EntityType="Self.Labor" />
+    <EntitySet Name="Managers" EntityType="Self.Manager" />
+    <EntitySet Name="Payrolls" EntityType="Self.Payroll" />
+    <EntitySet Name="Penalties" EntityType="Self.Penalty" />
+    <EntitySet Name="PenaltyBoards" EntityType="Self.PenaltyBoard" />
+    <EntitySet Name="Receipts" EntityType="Self.Receipt" />
+    <EntitySet Name="Receiptors" EntityType="Self.Receiptor" />
+    <EntitySet Name="ReportIncomes" EntityType="Self.ReportIncome" />
+    <EntitySet Name="ReportInventories" EntityType="Self.ReportInventory" />
+    <EntitySet Name="Rooms" EntityType="Self.Room" />
+    <EntitySet Name="Salaries" EntityType="Self.Salary" />
+    <EntitySet Name="SalaryBoards" EntityType="Self.SalaryBoard" />
+    <EntitySet Name="Shifts" EntityType="Self.Shift" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK__AccountEm__ID_Em__59FA5E80" Association="Self.FK__AccountEm__ID_Em__59FA5E80">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="AccountEmployee" EntitySet="AccountEmployees" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AccountMa__ID_Ma__398D8EEE" Association="Self.FK__AccountMa__ID_Ma__398D8EEE">
+      <End Role="Manager" EntitySet="Managers" />
+      <End Role="AccountManager" EntitySet="AccountManagers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CalendarL__ID_La__634EBE90" Association="Self.FK__CalendarL__ID_La__634EBE90">
+      <End Role="Labor" EntitySet="Labors" />
+      <End Role="CalendarLabor" EntitySet="CalendarLabors" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CalendarL__ID_Sh__625A9A57" Association="Self.FK__CalendarL__ID_Sh__625A9A57">
+      <End Role="Shift" EntitySet="Shifts" />
+      <End Role="CalendarLabor" EntitySet="CalendarLabors" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CalendarM__ID_Ma__2DE6D218" Association="Self.FK__CalendarM__ID_Ma__2DE6D218">
+      <End Role="Manager" EntitySet="Managers" />
+      <End Role="CalendarManager" EntitySet="CalendarManagers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CalendarM__ID_Sh__2CF2ADDF" Association="Self.FK__CalendarM__ID_Sh__2CF2ADDF">
+      <End Role="Shift" EntitySet="Shifts" />
+      <End Role="CalendarManager" EntitySet="CalendarManagers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CalendarE__ID_Re__6442E2C9" Association="Self.FK__CalendarE__ID_Re__6442E2C9">
+      <End Role="Receiptor" EntitySet="Receiptors" />
+      <End Role="CalendarReceiptor" EntitySet="CalendarReceiptors" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Checkinou__ID_Ca__44FF419A" Association="Self.FK__Checkinou__ID_Ca__44FF419A">
+      <End Role="CalendarReceiptor" EntitySet="CalendarReceiptors" />
+      <End Role="Checkinout" EntitySet="Checkinouts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Penalty__ID_Cale__4CA06362" Association="Self.FK__Penalty__ID_Cale__4CA06362">
+      <End Role="CalendarReceiptor" EntitySet="CalendarReceiptors" />
+      <End Role="Penalty" EntitySet="Penalties" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SmartCale__ID_Sh__403A8C7D" Association="Self.FK__SmartCale__ID_Sh__403A8C7D">
+      <End Role="Shift" EntitySet="Shifts" />
+      <End Role="CalendarReceiptor" EntitySet="CalendarReceiptors" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Checkinou__ID_Em__440B1D61" Association="Self.FK__Checkinou__ID_Em__440B1D61">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Checkinout" EntitySet="Checkinouts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HistoryRo__ID_Cu__66603565" Association="Self.FK__HistoryRo__ID_Cu__66603565">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="HistoryRoomcheck" EntitySet="HistoryRoomchecks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Receipt__ID_Cust__6B24EA82" Association="Self.FK__Receipt__ID_Cust__6B24EA82">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Receipt" EntitySet="Receipts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Labor__ID_Employ__01142BA1" Association="Self.FK__Labor__ID_Employ__01142BA1">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Labor" EntitySet="Labors" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Payroll__ID_Empl__5629CD9C" Association="Self.FK__Payroll__ID_Empl__5629CD9C">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Payroll" EntitySet="Payrolls" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Penalty__ID_Empl__4AB81AF0" Association="Self.FK__Penalty__ID_Empl__4AB81AF0">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Penalty" EntitySet="Penalties" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Receiptor__ID_Em__7E37BEF6" Association="Self.FK__Receiptor__ID_Em__7E37BEF6">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Receiptor" EntitySet="Receiptors" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Salary__ID_Emplo__5165187F" Association="Self.FK__Salary__ID_Emplo__5165187F">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Salary" EntitySet="Salaries" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HistoryRo__ID_Re__17036CC0" Association="Self.FK__HistoryRo__ID_Re__17036CC0">
+      <End Role="Receiptor" EntitySet="Receiptors" />
+      <End Role="HistoryRoomcheck" EntitySet="HistoryRoomchecks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HistoryRo__ID_Ro__68487DD7" Association="Self.FK__HistoryRo__ID_Ro__68487DD7">
+      <End Role="Room" EntitySet="Rooms" />
+      <End Role="HistoryRoomcheck" EntitySet="HistoryRoomchecks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Inventory__ID_In__19DFD96B" Association="Self.FK__Inventory__ID_In__19DFD96B">
+      <End Role="InventoryHistory" EntitySet="InventoryHistories" />
+      <End Role="InventoryAdd" EntitySet="InventoryAdds" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Inventory__ID_It__1AD3FDA4" Association="Self.FK__Inventory__ID_It__1AD3FDA4">
+      <End Role="Items" EntitySet="Items" />
+      <End Role="InventoryAdd" EntitySet="InventoryAdds" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Inventory__ID_Ma__2180FB33" Association="Self.FK__Inventory__ID_Ma__2180FB33">
+      <End Role="Manager" EntitySet="Managers" />
+      <End Role="InventoryAdd" EntitySet="InventoryAdds" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Inventory__ID_In__1EA48E88" Association="Self.FK__Inventory__ID_In__1EA48E88">
+      <End Role="InventoryHistory" EntitySet="InventoryHistories" />
+      <End Role="InventoryTake" EntitySet="InventoryTakes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Inventory__ID_It__60A75C0F" Association="Self.FK__Inventory__ID_It__60A75C0F">
+      <End Role="Items" EntitySet="Items" />
+      <End Role="InventoryHistory" EntitySet="InventoryHistories" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Inventory__ID_It__1F98B2C1" Association="Self.FK__Inventory__ID_It__1F98B2C1">
+      <End Role="Items" EntitySet="Items" />
+      <End Role="InventoryTake" EntitySet="InventoryTakes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Inventory__ID_La__4D5F7D71" Association="Self.FK__Inventory__ID_La__4D5F7D71">
+      <End Role="Labor" EntitySet="Labors" />
+      <End Role="InventoryTake" EntitySet="InventoryTakes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Inventory__ID_Ro__208CD6FA" Association="Self.FK__Inventory__ID_Ro__208CD6FA">
+      <End Role="Room" EntitySet="Rooms" />
+      <End Role="InventoryTake" EntitySet="InventoryTakes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Payroll__ID_Mana__571DF1D5" Association="Self.FK__Payroll__ID_Mana__571DF1D5">
+      <End Role="Manager" EntitySet="Managers" />
+      <End Role="Payroll" EntitySet="Payrolls" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Penalty__ID_Mana__4BAC3F29" Association="Self.FK__Penalty__ID_Mana__4BAC3F29">
+      <End Role="Manager" EntitySet="Managers" />
+      <End Role="Penalty" EntitySet="Penalties" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ReportInc__ID_Ma__2EDAF651" Association="Self.FK__ReportInc__ID_Ma__2EDAF651">
+      <End Role="Manager" EntitySet="Managers" />
+      <End Role="ReportIncome" EntitySet="ReportIncomes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ReportInv__ID_Ma__2FCF1A8A" Association="Self.FK__ReportInv__ID_Ma__2FCF1A8A">
+      <End Role="Manager" EntitySet="Managers" />
+      <End Role="ReportInventory" EntitySet="ReportInventories" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Penalty__ID_Pena__49C3F6B7" Association="Self.FK__Penalty__ID_Pena__49C3F6B7">
+      <End Role="PenaltyBoard" EntitySet="PenaltyBoards" />
+      <End Role="Penalty" EntitySet="Penalties" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Receipt__ID_Rece__151B244E" Association="Self.FK__Receipt__ID_Rece__151B244E">
+      <End Role="Receiptor" EntitySet="Receiptors" />
+      <End Role="Receipt" EntitySet="Receipts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Receipt__ID_Room__6D0D32F4" Association="Self.FK__Receipt__ID_Room__6D0D32F4">
+      <End Role="Room" EntitySet="Rooms" />
+      <End Role="Receipt" EntitySet="Receipts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Salary__ID_Salar__52593CB8" Association="Self.FK__Salary__ID_Salar__52593CB8">
+      <End Role="SalaryBoard" EntitySet="SalaryBoards" />
+      <End Role="Salary" EntitySet="Salaries" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HotelDataModelStoreContainer" CdmEntityContainer="HotelDataEntities">
+    <EntitySetMapping Name="AccountEmployees">
+      <EntityTypeMapping TypeName="HotelDataModel.AccountEmployee">
+        <MappingFragment StoreEntitySet="AccountEmployee">
+          <ScalarProperty Name="ID_Employee" ColumnName="ID_Employee" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AccountManagers">
+      <EntityTypeMapping TypeName="HotelDataModel.AccountManager">
+        <MappingFragment StoreEntitySet="AccountManager">
+          <ScalarProperty Name="ID_Manager" ColumnName="ID_Manager" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CalendarLabors">
+      <EntityTypeMapping TypeName="HotelDataModel.CalendarLabor">
+        <MappingFragment StoreEntitySet="CalendarLabor">
+          <ScalarProperty Name="ID_CalendarLabor" ColumnName="ID_CalendarLabor" />
+          <ScalarProperty Name="ID_Shift" ColumnName="ID_Shift" />
+          <ScalarProperty Name="Timein" ColumnName="Timein" />
+          <ScalarProperty Name="Timeout" ColumnName="Timeout" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="ID_Labor" ColumnName="ID_Labor" />
+          <ScalarProperty Name="Name_Employee" ColumnName="Name_Employee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CalendarManagers">
+      <EntityTypeMapping TypeName="HotelDataModel.CalendarManager">
+        <MappingFragment StoreEntitySet="CalendarManager">
+          <ScalarProperty Name="ID_CalendarManager" ColumnName="ID_CalendarManager" />
+          <ScalarProperty Name="ID_Shift" ColumnName="ID_Shift" />
+          <ScalarProperty Name="Timein" ColumnName="Timein" />
+          <ScalarProperty Name="Timeout" ColumnName="Timeout" />
+          <ScalarProperty Name="ID_Manager" ColumnName="ID_Manager" />
+          <ScalarProperty Name="Name_Manager" ColumnName="Name_Manager" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CalendarReceiptors">
+      <EntityTypeMapping TypeName="HotelDataModel.CalendarReceiptor">
+        <MappingFragment StoreEntitySet="CalendarReceiptor">
+          <ScalarProperty Name="ID_CalendarReceiptor" ColumnName="ID_CalendarReceiptor" />
+          <ScalarProperty Name="ID_Shift" ColumnName="ID_Shift" />
+          <ScalarProperty Name="Timein" ColumnName="Timein" />
+          <ScalarProperty Name="Timeout" ColumnName="Timeout" />
+          <ScalarProperty Name="Name_Receiptor" ColumnName="Name_Receiptor" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="ID_Receiptor" ColumnName="ID_Receiptor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Checkinouts">
+      <EntityTypeMapping TypeName="HotelDataModel.Checkinout">
+        <MappingFragment StoreEntitySet="Checkinout">
+          <ScalarProperty Name="ID_Checkinout" ColumnName="ID_Checkinout" />
+          <ScalarProperty Name="ID_Employee" ColumnName="ID_Employee" />
+          <ScalarProperty Name="ID_Calendar" ColumnName="ID_Calendar" />
+          <ScalarProperty Name="Timecheckin" ColumnName="Timecheckin" />
+          <ScalarProperty Name="Timecheckout" ColumnName="Timecheckout" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="HotelDataModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="ID_Customer" ColumnName="ID_Customer" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Pictures" ColumnName="Pictures" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="HotelDataModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="ID_Employee" ColumnName="ID_Employee" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HistoryRoomchecks">
+      <EntityTypeMapping TypeName="HotelDataModel.HistoryRoomcheck">
+        <MappingFragment StoreEntitySet="HistoryRoomcheck">
+          <ScalarProperty Name="ID_TakeItem" ColumnName="ID_TakeItem" />
+          <ScalarProperty Name="ID_Customer" ColumnName="ID_Customer" />
+          <ScalarProperty Name="ID_Room" ColumnName="ID_Room" />
+          <ScalarProperty Name="Timecheckin" ColumnName="Timecheckin" />
+          <ScalarProperty Name="Timecheckout" ColumnName="Timecheckout" />
+          <ScalarProperty Name="Timehavetocheckout" ColumnName="Timehavetocheckout" />
+          <ScalarProperty Name="ID_Receiptor" ColumnName="ID_Receiptor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InventoryAdds">
+      <EntityTypeMapping TypeName="HotelDataModel.InventoryAdd">
+        <MappingFragment StoreEntitySet="InventoryAdd">
+          <ScalarProperty Name="ID_InventoryAdd" ColumnName="ID_InventoryAdd" />
+          <ScalarProperty Name="ID_InventoryHistory" ColumnName="ID_InventoryHistory" />
+          <ScalarProperty Name="ID_Items" ColumnName="ID_Items" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="ID_Manager" ColumnName="ID_Manager" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InventoryHistories">
+      <EntityTypeMapping TypeName="HotelDataModel.InventoryHistory">
+        <MappingFragment StoreEntitySet="InventoryHistory">
+          <ScalarProperty Name="ID_InventoryHistory" ColumnName="ID_InventoryHistory" />
+          <ScalarProperty Name="ID_Items" ColumnName="ID_Items" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InventoryTakes">
+      <EntityTypeMapping TypeName="HotelDataModel.InventoryTake">
+        <MappingFragment StoreEntitySet="InventoryTake">
+          <ScalarProperty Name="ID_InventoryTake" ColumnName="ID_InventoryTake" />
+          <ScalarProperty Name="ID_InventoryHistory" ColumnName="ID_InventoryHistory" />
+          <ScalarProperty Name="ID_Items" ColumnName="ID_Items" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="ID_Room" ColumnName="ID_Room" />
+          <ScalarProperty Name="ID_Labor" ColumnName="ID_Labor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Items">
+      <EntityTypeMapping TypeName="HotelDataModel.Item">
+        <MappingFragment StoreEntitySet="Items">
+          <ScalarProperty Name="ID_Items" ColumnName="ID_Items" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Labors">
+      <EntityTypeMapping TypeName="HotelDataModel.Labor">
+        <MappingFragment StoreEntitySet="Labor">
+          <ScalarProperty Name="ID_Employee" ColumnName="ID_Employee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Managers">
+      <EntityTypeMapping TypeName="HotelDataModel.Manager">
+        <MappingFragment StoreEntitySet="Manager">
+          <ScalarProperty Name="ID_Manager" ColumnName="ID_Manager" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payrolls">
+      <EntityTypeMapping TypeName="HotelDataModel.Payroll">
+        <MappingFragment StoreEntitySet="Payroll">
+          <ScalarProperty Name="ID_Payroll" ColumnName="ID_Payroll" />
+          <ScalarProperty Name="ID_Employee" ColumnName="ID_Employee" />
+          <ScalarProperty Name="ID_Manager" ColumnName="ID_Manager" />
+          <ScalarProperty Name="Total_Payment" ColumnName="Total_Payment" />
+          <ScalarProperty Name="Punish" ColumnName="Punish" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Penalties">
+      <EntityTypeMapping TypeName="HotelDataModel.Penalty">
+        <MappingFragment StoreEntitySet="Penalty">
+          <ScalarProperty Name="ID_Penalty" ColumnName="ID_Penalty" />
+          <ScalarProperty Name="ID_PenaltyBoard" ColumnName="ID_PenaltyBoard" />
+          <ScalarProperty Name="ID_Employee" ColumnName="ID_Employee" />
+          <ScalarProperty Name="ID_Manager" ColumnName="ID_Manager" />
+          <ScalarProperty Name="ID_Calendar" ColumnName="ID_Calendar" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PenaltyBoards">
+      <EntityTypeMapping TypeName="HotelDataModel.PenaltyBoard">
+        <MappingFragment StoreEntitySet="PenaltyBoard">
+          <ScalarProperty Name="ID_PenaltyBoard" ColumnName="ID_PenaltyBoard" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Receipts">
+      <EntityTypeMapping TypeName="HotelDataModel.Receipt">
+        <MappingFragment StoreEntitySet="Receipt">
+          <ScalarProperty Name="ID_Receipt" ColumnName="ID_Receipt" />
+          <ScalarProperty Name="ID_Customer" ColumnName="ID_Customer" />
+          <ScalarProperty Name="Name_Customer" ColumnName="Name_Customer" />
+          <ScalarProperty Name="ID_Room" ColumnName="ID_Room" />
+          <ScalarProperty Name="Timemake" ColumnName="Timemake" />
+          <ScalarProperty Name="Totalpayment" ColumnName="Totalpayment" />
+          <ScalarProperty Name="Dayintotal" ColumnName="Dayintotal" />
+          <ScalarProperty Name="ID_Receiptor" ColumnName="ID_Receiptor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Receiptors">
+      <EntityTypeMapping TypeName="HotelDataModel.Receiptor">
+        <MappingFragment StoreEntitySet="Receiptor">
+          <ScalarProperty Name="ID_Employee" ColumnName="ID_Employee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReportIncomes">
+      <EntityTypeMapping TypeName="HotelDataModel.ReportIncome">
+        <MappingFragment StoreEntitySet="ReportIncome">
+          <ScalarProperty Name="ID_ReportIncome" ColumnName="ID_ReportIncome" />
+          <ScalarProperty Name="AmountIncome" ColumnName="AmountIncome" />
+          <ScalarProperty Name="AmountOutcome" ColumnName="AmountOutcome" />
+          <ScalarProperty Name="ID_Manager" ColumnName="ID_Manager" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReportInventories">
+      <EntityTypeMapping TypeName="HotelDataModel.ReportInventory">
+        <MappingFragment StoreEntitySet="ReportInventory">
+          <ScalarProperty Name="ID_ReportInventory" ColumnName="ID_ReportInventory" />
+          <ScalarProperty Name="Totalpriceatitems" ColumnName="Totalpriceatitems" />
+          <ScalarProperty Name="Totalpricedeliveritems" ColumnName="Totalpricedeliveritems" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="ID_Manager" ColumnName="ID_Manager" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rooms">
+      <EntityTypeMapping TypeName="HotelDataModel.Room">
+        <MappingFragment StoreEntitySet="Room">
+          <ScalarProperty Name="ID_Room" ColumnName="ID_Room" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Numberofbed" ColumnName="Numberofbed" />
+          <ScalarProperty Name="Priceperhours" ColumnName="Priceperhours" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Salaries">
+      <EntityTypeMapping TypeName="HotelDataModel.Salary">
+        <MappingFragment StoreEntitySet="Salary">
+          <ScalarProperty Name="ID_Salary" ColumnName="ID_Salary" />
+          <ScalarProperty Name="ID_Employee" ColumnName="ID_Employee" />
+          <ScalarProperty Name="ID_SalaryBoard" ColumnName="ID_SalaryBoard" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SalaryBoards">
+      <EntityTypeMapping TypeName="HotelDataModel.SalaryBoard">
+        <MappingFragment StoreEntitySet="SalaryBoard">
+          <ScalarProperty Name="ID_SalaryBoard" ColumnName="ID_SalaryBoard" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Shifts">
+      <EntityTypeMapping TypeName="HotelDataModel.Shift">
+        <MappingFragment StoreEntitySet="Shift">
+          <ScalarProperty Name="ID_Shift" ColumnName="ID_Shift" />
+          <ScalarProperty Name="Timein" ColumnName="Timein" />
+          <ScalarProperty Name="Timeout" ColumnName="Timeout" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="HotelDataModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
